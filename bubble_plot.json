@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "GDP by Sector for Selected State",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ranusha-l/Data-Viz-testing/refs/heads/main/gdp_state_real_supply_cleaned.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "filter": {"selection": "state_select"}
+      }
+    ],
+    "selection": {
+      "state_select": {
+        "type": "single",
+        "fields": ["state"],
+        "bind": {
+          "input": "select",
+          "options": ["Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Pulau Pinang", "Sabah", "Sarawak", "Selangor", "Terengganu", "W.P. Kuala Lumpur"],
+          "name": "Select State: "
+        }
+      }
+    },
+    "mark": {"type": "circle", "tooltip": true},
+    "encoding": {
+      "x": {"field": "sector", "type": "nominal", "title": "Sector"},
+      "y": {"field": "value", "type": "quantitative", "title": "GDP"},
+      "size": {"field": "value", "type": "quantitative", "title": "GDP"},
+      "color": {"field": "sector", "type": "nominal"},
+      "tooltip": [
+        {"field": "sector", "type": "nominal", "title": "Sector"},
+        {"field": "value", "type": "quantitative", "title": "GDP"}
+      ]
+    }
+  }
+  

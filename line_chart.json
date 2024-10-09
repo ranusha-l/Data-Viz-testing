@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "GDP by State Over Time for Selected Sector",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ranusha-l/Data-Viz-testing/refs/heads/main/gdp_state_real_supply_cleaned.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "filter": {"selection": "sector_select"}
+      }
+    ],
+    "selection": {
+      "sector_select": {
+        "type": "single",
+        "fields": ["sector"],
+        "bind": {
+          "input": "select",
+          "options": ["Overall GDP", "Mining & Quarrying", "Construction", "Import Duties", "Agriculture", "Services", "Manufacturing"],
+          "name": "Select Sector: "
+        }
+      }
+    },
+    "mark": {"type": "line", "point": true},
+    "encoding": {
+      "x": {"field": "year", "type": "ordinal", "title": "Year"},
+      "y": {"field": "value", "type": "quantitative", "title": "GDP"},
+      "color": {"field": "state", "type": "nominal", "title": "State"},
+      "tooltip": [
+        {"field": "state", "type": "nominal", "title": "State"},
+        {"field": "year", "type": "ordinal", "title": "Year"},
+        {"field": "value", "type": "quantitative", "title": "GDP"}
+      ]
+    }
+  }
+  
