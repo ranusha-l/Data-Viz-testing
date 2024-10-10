@@ -1,1 +1,41 @@
-Readme 
+
+//   "data": {
+//     "url": "https://raw.githubusercontent.com/ranusha-l/Data-Viz-testing/refs/heads/main/ne_10m_admin_1_states_provinces.topojson",
+//     "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+//   },
+//   "transform": [
+//     {
+//       "lookup": "properties.name",
+//       "from": {
+//         "data": {
+//           "url": "https://raw.githubusercontent.com/ranusha-l/Data-Viz-testing/refs/heads/main/gdp_state_real_supply_cleaned.csv",
+//           "format": {"type": "csv"}
+//         },
+//         "key": "state",
+//         "fields": ["value", "sector"]
+//       }
+//     },
+//     {
+//       "filter": {"selection": "sector_select"}
+//     }
+//   ],
+//   "layer": [
+//     {
+//       "mark": {"type": "geoshape"},
+//       "selection": {
+//         "sector_select": {
+//           "type": "single",
+//           "fields": ["sector"],
+//           "bind": {
+//             "input": "select",
+//             "options": ["Overall GDP", "Mining & Quarrying", "Construction", "Import Duties", "Agriculture", "Services", "Manufacturing"],
+//             "name": "Select sector: "
+//           }
+//         }
+//       },
+//       "encoding": {
+//         "color": {"field": "value", "type": "quantitative"}
+//       }
+//     }
+//   ]
+// }
